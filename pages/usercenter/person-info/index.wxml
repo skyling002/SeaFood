@@ -1,0 +1,43 @@
+<view class="person-info">
+  <t-cell-group>
+    <t-cell title="头像" center="{{true}}" data-type="avatarUrl" arrow t-class-left="order-group__left">
+      <button slot="note" class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <!-- 非网络地址无法解析 -->
+        <t-image src="{{personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
+      </button>
+    </t-cell>
+    <t-cell title="昵称" arrow data-type="name" t-class="t-cell-class" t-class-left="order-group__left">
+      <view slot="note">
+        <mp-form>
+          <mp-cells>
+            <mp-cell title="昵称">
+            <input bindinput="bindKeyInput" value="{{personInfo.nickName}}" type="nickname" bindblur="onNameBlur" class="weui-input person-info__name-input" placeholder-style="请输入昵称"/>
+            </mp-cell>
+          </mp-cells>
+        </mp-form>
+      </view>
+    </t-cell>
+    <t-cell bordered="{{false}}" title="手机号" arrow data-type="phoneNumber" bind:click="onClickCell" t-class="t-cell-class" t-class-left="order-group__left" >
+      <view slot="note">
+        <!-- 条件渲染：根据isEditingPhone状态显示不同内容 -->
+        <view wx:if="{{!isEditingPhone}}" class="phone-note">
+          {{personInfo.phoneNumber ? personInfo.phoneNumber : '请输入手机号'}}
+        </view>
+        <view wx:else class="phone-input-wrapper">
+          <input 
+                 bindinput="bindPhoneNumber" 
+                 value="{{personInfo.phoneNumber}}" 
+                 type="phoneNumber"  
+                 class="weui-input person-info__phone-input" 
+                 placeholder="请输入手机号" 
+                 placeholder-style="color: #999;"
+                 bindblur="onPhoneBlur"/>
+          <!-- 显示手机号验证错误提示 -->
+          <view wx:if="{{phoneError}}" class="phone-error-message">
+            {{phoneError}}
+          </view>
+        </view>
+      </view>
+    </t-cell>
+  </t-cell-group>
+</view>

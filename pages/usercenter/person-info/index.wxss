@@ -1,0 +1,113 @@
+:host {
+  background-color: #f5f5f5;
+}
+page view {
+  box-sizing: border-box;
+}
+.person-info {
+  padding-top: 20rpx;
+}
+
+.person-info__btn {
+  width: 100%;
+  border: 2rpx solid #ddd;
+  border-radius: 48rpx;
+  padding: 18rpx 0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+.person-info__wrapper {
+  width: 100%;
+  padding: 0 32rpx;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20rpx);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.avatarUrl {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50% !important;
+  overflow: hidden;
+}
+
+.avatar-btn {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.avatar-btn::after {
+  border: none;
+}
+
+.t-class-confirm {
+  color: #fa550f !important;
+}
+
+.person-info .order-group__left {
+  margin-right: 0;
+}
+.person-info .t-cell-class {
+  height: 112rpx;
+}
+
+.person-info__name-input {
+  text-align: right;
+  border: none;
+  background: transparent;
+}
+.person-info__name-text {
+  color: #111;
+}
+
+/* 手机号相关样式 */
+.phone-note {
+  text-align: right;
+  color: #666;
+}
+
+.phone-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.person-info__phone-input {
+  text-align: right;
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 0;
+}
+
+.phone-error-message {
+  color: #ff4d4f;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  text-align: right;
+  width: 100%;
+}
+
+/* 确保整个note区域都可以点击 */
+.note-tap-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* 移除点击高亮效果 */
+}
+
+/* 确保输入框不会被遮挡 */
+.person-info__phone-input {
+  z-index: 1;
+}

@@ -1,0 +1,71 @@
+{
+	"desc": "商城用户业务表",
+	"isNewDataSource": 1,
+	"methods": [],
+	"name": "shop_user",
+	"schema": {
+		"x-primary-column": "_id",
+		"x-kind": "tcb",
+		"name": "shop_user",
+		"type": "object",
+		"title": "商城用户",
+		"properties": {
+			"_id": {
+				"x-system": true,
+				"type": "string",
+				"title": "数据标识",
+				"x-unique": true
+			},
+			"nickName": {
+				"type": "string",
+				"title": "用户昵称",
+				"x-index": 0
+			},
+			"avatarUrl": {
+				"type": "string",
+				"format": "x-image",
+				"title": "用户头像",
+				"x-index": 1
+			},
+			"phoneNumber": {
+				"type": "string",
+				"title": "手机号",
+				"x-index": 2
+			},
+			"gender": {
+				"type": "number",
+				"title": "性别",
+				"description": "0:未知, 1:男, 2:女",
+				"default": 0,
+				"x-index": 3
+			},
+			"points": {
+				"type": "number",
+				"title": "积分",
+				"default": 0,
+				"x-index": 4
+			},
+			"balance": {
+				"type": "number",
+				"title": "余额(分)",
+				"default": 0,
+				"x-index": 5
+			},
+			"level": {
+				"type": "number",
+				"title": "会员等级",
+				"description": "0:普通, 1:VIP, 2:SVIP",
+				"default": 0,
+				"x-index": 6
+			},
+			"defaultAddressId": {
+				"type": "string",
+				"title": "默认地址ID",
+				"x-index": 7
+			}
+		},
+		"required": ["nickName"]
+	},
+	"title": "商城用户",
+	"type": "database"
+}

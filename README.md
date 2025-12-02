@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <br />
 <div align="center">
     <img src="https://qcloudimg.tencent-cloud.cn/raw/f97dc74fbf9af5d7b2b3d8bc0a4e91d4.png" alt="Logo" width="400">
@@ -48,3 +49,6 @@ npm install
 ## 运行小程序
 
 在微信开发者工具中导入本项目即可运行，若想配合后端运行完整应用，请前往<https://tcb.cloud.tencent.com/cloud-template/detail?appName=electronic-business&from=wxide_tcb_shop>安装。
+=======
+# SeaFood
+>>>>>>> 0790bc0a4e89bf4b1ca9c5b90b41651a1cabfff4

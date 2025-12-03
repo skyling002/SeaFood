@@ -37,6 +37,9 @@ export async function getUserInfo(){
         avatarUrl: u.avatarUrl || defaultAvatar,
         nickName: u.nickName || '微信用户',
         phoneNumber: u.phoneNumber || '',
+        points: u.points || 0,
+        avatarFileID: u.avatarFileID || '',
+        openid: u._openid || '',
       };
       // 更新积分余额展示
       countsData[0].num = u.points || 0;

@@ -28,7 +28,7 @@ async function getAddress(){
 async function getPersonInfo() {
   try {
     // 优先读取本地缓存，提升加载速度
-    const cachedInfo = wx.getStorageSync('personInfo');
+    const cachedInfo = wx.getStorageSync('userInfo');
     if (cachedInfo) {
       console.log('从缓存中获取个人信息', cachedInfo);
       return cachedInfo;
@@ -43,7 +43,7 @@ async function getPersonInfo() {
     
     // 存入缓存
     if (info) {
-      wx.setStorageSync('personInfo', info);
+      wx.setStorageSync('userInfo', info);
     }
     
     return info;

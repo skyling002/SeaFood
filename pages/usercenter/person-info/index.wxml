@@ -3,7 +3,7 @@
     <t-cell title="头像" center="{{true}}" data-type="avatarUrl" arrow t-class-left="order-group__left">
       <button slot="note" class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
         <!-- 非网络地址无法解析 -->
-        <t-image src="{{personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" />
+        <image src="{{personInfo.avatarUrl}}" class="avatarUrl" mode="aspectFill" />
       </button>
     </t-cell>
     <t-cell title="昵称" arrow data-type="name" t-class="t-cell-class" t-class-left="order-group__left">

@@ -1,25 +1,35 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-const cloudbase = require("@cloudbase/node-sdk");
 
-const app = cloudbase.init({
-  env: cloud.DYNAMIC_CURRENT_ENV,
-});
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
-const models = app.models;
-const SKU_MODEL_KEY = 'shop_sku';
+const db = cloud.database()
+
+// 数据库集合名称，请确保云控制台数据库中存在此集合
+const COLLECTION_NAME = 'doc_sku';
 
 // 云函数入口函数
 exports.main = async (event) => {
-  const { skuId, data } = event
-  return models[SKU_MODEL_KEY].update({
-    data,
-    filter: {
-      where: {
-        _id: {
-          $eq: skuId,
-        },
-      },
-    },
-  });
+  console.log('Event:', event);
+  try {
+    const { skuId, data } = event
+    
+    // 使用 wx-server-sdk 原生数据库 API 更新
+    const res = await db.collection(COLLECTION_NAME).doc(skuId).update({
+      data: data
+    })
+
+    return {
+      code: 0,
+      data: res
+    }
+  } catch (e) {
+    console.error("Error in shop_update_sku:", e);
+    return {
+      code: -1,
+      msg: e.message
+    }
+  }
 }

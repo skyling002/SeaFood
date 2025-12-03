@@ -1,5 +1,6 @@
 // 第三方库
 import Toast from 'tdesign-miniprogram/toast/index';
+import Dialog from 'tdesign-miniprogram/dialog/index';
 
 // 服务层
 import { getAllAttrValues } from '../../../services/attrValue/attrValue';
@@ -127,10 +128,12 @@ Page({
   },
 
   buyItNow() {
+    if (!this.checkLogin()) return;
     this.showSkuSelectPopup(OUT_OPERATE_STATUS.BUY);
   },
 
   toAddCart() {
+    if (!this.checkLogin()) return;
     this.showSkuSelectPopup(OUT_OPERATE_STATUS.CART);
   },
 
@@ -249,7 +252,30 @@ Page({
     });
   },
 
+  checkLogin() {
+    const isLoggedIn = wx.getStorageSync('isLoggedIn');
+    if (!isLoggedIn) {
+      Dialog.confirm({
+        context: this,
+        selector: '#t-dialog',
+        title: '未登录',
+        content: '请先登录以进行此操作',
+        confirmBtn: '去登录',
+        cancelBtn: { content: '再逛逛', variant: 'outline' },
+      })
+        .then(() => {
+          wx.switchTab({ url: '/pages/usercenter/index' });
+        })
+        .catch(() => {
+          // 用户点击“再逛逛”，不做任何操作，留在当前页面
+        });
+      return false;
+    }
+    return true;
+  },
+
   async addCart({ detail: { count, pickedSku } }) {
+    if (!this.checkLogin()) return;
     const overCount = () => this.toast('超过购买上限了');
     const addCartSucceed = () => {
       cartShouldFresh();
@@ -285,6 +311,7 @@ Page({
   },
 
   gotoBuy(e) {
+    if (!this.checkLogin()) return;
     const overCount = () => this.toast('超过购买上限了');
     const buyCount = e.detail.count;
     const skuId = e.detail.pickedSku._id;

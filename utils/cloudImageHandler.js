@@ -1,4 +1,7 @@
 export async function getCloudImageTempUrl(images) {
+  if (!images || !Array.isArray(images)) {
+    return [];
+  }
   const handledIndexToOriginIndex = new Map();
   const shouldBeHandledImages = [];
   images.forEach((x, index) => {
@@ -22,6 +25,7 @@ export async function getCloudImageTempUrl(images) {
 }
 
 export async function getSingleCloudImageTempUrl(image) {
+  if (!image || typeof image !== 'string') return image;
   if (!image.startsWith('cloud')) return image;
   return (
     await wx.cloud.getTempFileURL({

@@ -4,6 +4,10 @@
  * @returns
  */
 export async function pay(order) {
+  // 模拟支付成功，用于演示或测试
+  return Promise.resolve();
+  
+  /* 真实支付逻辑，需要配置商户号
   try {
     const res = await wx.cloud.callFunction({
       // 云函数名称
@@ -28,6 +32,7 @@ export async function pay(order) {
   } catch (e) {
     return Promise.reject(e);
   }
+  */
 }
 
 export async function refund(orderId) {

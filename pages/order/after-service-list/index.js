@@ -93,8 +93,8 @@ Page({
   getAfterServiceList(statusCode = -1, reset = false) {
     const params = {
       parameter: {
-        pageSize: this.page.size,
-        pageNum: this.page.num,
+        pageSize: this.page?.size || 10,
+        pageNum: this.page?.num || 1,
       },
     };
     if (statusCode !== -1) params.parameter.afterServiceStatus = statusCode;

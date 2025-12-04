@@ -107,8 +107,8 @@ Page({
     });
     try {
       const { records, total } = await listOrder({
-        pageSize: this.page.size,
-        pageNumber: this.page.num,
+        pageSize: this.page?.size || 5,
+        pageNumber: this.page?.num || 1,
         status: statusCode !== ORDER_STATUS_ALL ? statusCode : undefined,
       });
 
@@ -143,7 +143,7 @@ Page({
 
   refreshList(status = ORDER_STATUS_ALL) {
     this.page = {
-      size: this.page.size,
+      size: this.page?.size || 5,
       num: 1,
     };
     this.setData({ curTab: status, orderList: [] });
